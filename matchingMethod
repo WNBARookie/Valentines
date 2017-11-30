@@ -1,0 +1,29 @@
+//compares two potential matches with a person and returns true/false on which is the better match
+
+private boolean match(String[] person1, String[] person2, String[] currentMatch){
+        //name, id, grade, gender, taken?, current match, 20 questions
+        int person2Matches = 0;
+        int currentMatchMatches = 0;
+        if(person1[3].equals(person2[3]) || person2[4].equals("taken") || !person1[2].equals(person2[2]))
+            return false;
+        for(int i = 6; i < 25; i++){
+            if(person1[i].equals(person2[i])){
+                person2Matches++;
+            }
+            if(person1[i].equals(currentMatch[i])){
+                currentMatchMatches++;
+            }
+        }
+        if(person2Matches > currentMatchMatches){
+            return true;
+        }
+        for(int i = 6; i < 25; i++){
+            if(person1[i].equals(person2[i]) && !person1[i].equals(currentMatch[i])){
+                return true;
+            }
+            if(!person1[i].equals(person2[i]) && person1[i].equals(currentMatch[i])){
+                return false;
+            }
+        }
+        return false;
+    }
